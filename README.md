@@ -7,6 +7,20 @@ dependencies {
     compile project(':AMapLocation')
 }
 ```
+或者使用aar依赖方式(当然需要自己生成aar包)，直接将.aar包放入libs文件夹，并且  
+```
+android {  
+    ... 
+    repositories {  
+        flatDir {  
+        dirs 'libs'  
+    }  
+}
+dependencies {  
+    ...
+    compile(name:'这里aar包文件名', ext:'aar')  
+}  
+```
 或者直接将.arr包放入libs文件夹  
 ## 2.配置
 先在 **AndroidManifest.xml** 中添加

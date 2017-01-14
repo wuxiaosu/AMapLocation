@@ -24,11 +24,13 @@ public class AMapLocationService implements AMapLocationListener {
     private List<AMapLocationListener> listenerList = new ArrayList<>();
 
     public AMapLocationService(Context locationContext) {
-        synchronized (objLock) {
-            if (locationClient == null) {
-                locationClient = new AMapLocationClient(locationContext);
-                locationClient.setLocationOption(getDefaultLocationOption());
-                locationClient.setLocationListener(this);
+        if (locationClient == null) {
+            synchronized (objLock) {
+                if (locationClient == null) {
+                    locationClient = new AMapLocationClient(locationContext);
+                    locationClient.setLocationOption(getDefaultLocationOption());
+                    locationClient.setLocationListener(this);
+                }
             }
         }
     }
